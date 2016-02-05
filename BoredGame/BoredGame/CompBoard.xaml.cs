@@ -27,7 +27,7 @@ namespace BoredGame
 
     public sealed partial class CompBoard : Page
     {
-        private Dictionary<String, int> tile = new Dictionary<string, int>();
+        private Dictionary<Rectangle, int> tile = new Dictionary<Rectangle, int>();
         private List<String> myRectangles = new List<String>();
         private Random r = new Random();
 
@@ -36,32 +36,21 @@ namespace BoredGame
             this.InitializeComponent();
             
             setBoard();
-            setRectangle();
+            //setRectangle();
 
         }
 
         public void setBoard()
         {
-            int count = 8;
-            int max = 8;
-            char letter = 'a';
             int treasure = 0;
-            String myRect;
 
-            for (int i=1; i< count; i++)
-            {
-
-                for(int j=1; j< max; j++)
-                {
-                    myRect = letter + "" + i;
-                    tile.Add(letter + "" + i, treasure);
-                    myRectangles.Add(myRect);
-                    letter++;
-                }
-
-                letter = 'a';
-            }
-
+            tile.Add(a1, treasure); tile.Add(a2, treasure); tile.Add(a3, treasure); tile.Add(a4, treasure); tile.Add(a5, treasure); tile.Add(a6, treasure); 
+            tile.Add(b1, treasure); tile.Add(b2, treasure); tile.Add(b3, treasure); tile.Add(b4, treasure); tile.Add(b5, treasure); tile.Add(b6, treasure); 
+            tile.Add(c1, treasure); tile.Add(c2, treasure); tile.Add(c3, treasure); tile.Add(c4, treasure); tile.Add(c5, treasure); tile.Add(c6, treasure); 
+            tile.Add(d1, treasure); tile.Add(d2, treasure); tile.Add(d3, treasure); tile.Add(d4, treasure); tile.Add(d5, treasure); tile.Add(d6, treasure); 
+            tile.Add(e1, treasure); tile.Add(e2, treasure); tile.Add(e3, treasure); tile.Add(e4, treasure); tile.Add(e5, treasure); tile.Add(e6, treasure); 
+            tile.Add(f1, treasure); tile.Add(f2, treasure); tile.Add(f3, treasure); tile.Add(f4, treasure); tile.Add(f5, treasure); tile.Add(f6, treasure); 
+            
             buryTreasure();
 
         }//textboxBoard
@@ -71,17 +60,19 @@ namespace BoredGame
             int count = 5;
             int treasure = 1;
             String position;
+            Rectangle pos = new Rectangle();
 
             for(int i=0; i< count; i++)
             {
                 position = getRandom();
-                if (tile.ContainsKey(position))
+                pos.Name = position;
+                if (tile.ContainsKey(pos))
                 {
-                    while (tile[position] == treasure)
+                    while (tile[pos] == treasure)
                     {
                         position = getRandom();
                     }
-                    tile[position] = treasure;
+                    tile[pos] = treasure;
                 }
             }
 
@@ -89,8 +80,8 @@ namespace BoredGame
 
         public String getRandom()
         {
-            int num1 = r.Next(99) % 7;
-            int num2 = r.Next(99) % 6;
+            int num1 = r.Next(99) % 6;
+            int num2 = r.Next(99) % 5;
             char letter = ' ';
 
             switch (num1)
@@ -113,9 +104,6 @@ namespace BoredGame
                 case 5:
                     letter = 'f';
                     break;
-                case 6:
-                    letter = 'g';
-                    break;
                 
             }
             num2++;
@@ -125,21 +113,193 @@ namespace BoredGame
 
         public void setRectangle()
         {
-            List<Rectangle> myOtherRects = new List<Rectangle>();
-            myOtherRects.Add(a1);myOtherRects.Add(a2);myOtherRects.Add(a3); myOtherRects.Add(a4); myOtherRects.Add(a5); myOtherRects.Add(a6); myOtherRects.Add(a7);
-            myOtherRects.Add(b1); myOtherRects.Add(b2); myOtherRects.Add(b3); myOtherRects.Add(b4); myOtherRects.Add(b5); myOtherRects.Add(b6); myOtherRects.Add(b7);
-            myOtherRects.Add(c1); myOtherRects.Add(c2); myOtherRects.Add(c3); myOtherRects.Add(c4); myOtherRects.Add(c5); myOtherRects.Add(c6); myOtherRects.Add(c7);
-            myOtherRects.Add(d1); myOtherRects.Add(d2); myOtherRects.Add(d3); myOtherRects.Add(d4); myOtherRects.Add(d5); myOtherRects.Add(d6); myOtherRects.Add(d7);
-            myOtherRects.Add(e1); myOtherRects.Add(e2); myOtherRects.Add(e3); myOtherRects.Add(e4); myOtherRects.Add(e5); myOtherRects.Add(e6); myOtherRects.Add(e7);
-            myOtherRects.Add(f1); myOtherRects.Add(f2); myOtherRects.Add(f3); myOtherRects.Add(f4); myOtherRects.Add(f5); myOtherRects.Add(f6); myOtherRects.Add(f7);
-            myOtherRects.Add(g1); myOtherRects.Add(g2); myOtherRects.Add(g3); myOtherRects.Add(g4); myOtherRects.Add(g5); myOtherRects.Add(g6); myOtherRects.Add(g7);
             ImageBrush img = new ImageBrush();
             img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/water.jpg"));
 
-            foreach (Rectangle rect in myOtherRects)
+            foreach (Rectangle rect in tile.Keys)
             {
                 rect.Fill = img;
             }
+        }
+
+        private void a1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void a2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void a3_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void a4_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void a5_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void a6_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void b1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void b2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void b3_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void b4_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void b5_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void b6_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void c1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void c2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void c3_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void c4_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void c5_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void c6_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void d1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void d2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void d3_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void d4_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void d5_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void d6_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void e1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void e2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void e3_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void e4_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void e5_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void e6_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void f1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void f2_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void f3_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void f4_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void f5_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void f6_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+
         }
     }
 }
