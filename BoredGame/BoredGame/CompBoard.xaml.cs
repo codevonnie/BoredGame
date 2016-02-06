@@ -28,8 +28,8 @@ namespace BoredGame
     public sealed partial class CompBoard : Page
     {
         private Dictionary<Rectangle, int> tile = new Dictionary<Rectangle, int>();
-        private List<String> myRectangles = new List<String>();
         private Random r = new Random();
+        private Rectangle selectedTile = new Rectangle();
 
         public CompBoard()
         {
@@ -114,7 +114,7 @@ namespace BoredGame
         public void setRectangle()
         {
             ImageBrush img = new ImageBrush();
-            img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/water.jpg"));
+            img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/treasure.png"));
 
             foreach (Rectangle rect in tile.Keys)
             {
@@ -122,9 +122,34 @@ namespace BoredGame
             }
         }
 
+        public void checkForTreasure(Rectangle selected)
+        {
+            String name = selected.Name;
+            ImageBrush img = new ImageBrush();
+
+            if (tile.ContainsKey(selected))
+            {
+                if (tile[selected] == 1)
+                {
+                    tile.Remove(selected);
+                    img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/treasure.png"));
+                    selected.Fill = img;
+                    tile.Add(selected, 1);
+                }
+                else
+                {
+                    tile.Remove(selected);
+                    img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/cross.png"));
+                    selected.Fill = img;
+                    tile.Add(selected, 0);
+                }
+            }
+        }
+
         private void a1_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            selectedTile = (Rectangle)sender;
+            checkForTreasure(selectedTile);
         }
 
         private void a2_Tapped(object sender, TappedRoutedEventArgs e)
@@ -300,6 +325,12 @@ namespace BoredGame
         private void f6_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
+        }
+
+        private void a1_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            selectedTile = (Rectangle)sender;
+            checkForTreasure(selectedTile);
         }
     }
 }

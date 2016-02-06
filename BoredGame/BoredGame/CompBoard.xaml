@@ -16,7 +16,7 @@
         </Grid.Background>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -54,7 +54,7 @@
         <TextBlock Text="5" FontSize="30" TextAlignment="Center" HorizontalAlignment="Center" Height="46" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Grid.Row="5"/>
         <TextBlock Text="6" FontSize="30" TextAlignment="Center" HorizontalAlignment="Center" Height="46" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Grid.Row="6"/>
     
-        <Rectangle x:Name="a1" HorizontalAlignment="Left" Height="46" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="80" Grid.Column="1" Tapped="a1_Tapped"/>
+        <Rectangle x:Name="a1" HorizontalAlignment="Left" Height="46" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="80" Grid.Column="1"/>
         <Rectangle x:Name="a2" HorizontalAlignment="Left" Height="46" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="80" Grid.Column="1" Margin="0,0.667,0,0" Tapped="a2_Tapped"/>
         <Rectangle x:Name="a3" HorizontalAlignment="Left" Height="46" Grid.Row="3" Stroke="Black" VerticalAlignment="Top" Width="80" Grid.Column="1" Margin="0,0.333,0,0" Tapped="a3_Tapped"/>
         <Rectangle x:Name="a4" HorizontalAlignment="Left" Height="46" Grid.Row="4" Stroke="Black" VerticalAlignment="Top" Width="80" Grid.Column="1" Tapped="a4_Tapped"/>

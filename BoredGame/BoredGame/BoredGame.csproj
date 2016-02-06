@@ -116,9 +116,11 @@
     <None Include="BoredGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cross.png" />
     <Content Include="Assets\map.png" />
     <Content Include="Assets\scroll.png" />
     <Content Include="Assets\scrollcrinkled.png" />
+    <Content Include="Assets\treasure.png" />
     <Content Include="Assets\water.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
