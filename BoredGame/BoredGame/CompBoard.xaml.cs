@@ -23,21 +23,24 @@ namespace BoredGame
         private List<String> treasureTiles = new List<string>();
         private int pScore;
         private int cScore;
-        private int turn;
-
         public object NotifyType { get; private set; }
 
         public CompBoard()
         {
             this.InitializeComponent();
-
-            setBoard();
-            turn = 0;
-            txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
-            //setRectangle();
-
+            play();
         }
 
+        public void play()
+        {
+            cScore = pScore = 0;
+            selectedTile = null;
+            tile.Clear();
+            setBoard();
+            txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
+
+        }
+        
         public void setBoard()
         {
             tile.Add("a1", a1); tile.Add("a2", a2); tile.Add("a3", a3); tile.Add("a4", a4); tile.Add("a5", a5); tile.Add("a6", a6);
@@ -103,60 +106,62 @@ namespace BoredGame
 
         public void checkForTreasure(Button selected)
         {
-            if (turn == 0)
-            {
-                String name = selected.Name;
-                ImageBrush img = new ImageBrush();
+            
+            String name = selected.Name;
+            ImageBrush img = new ImageBrush();
 
-                if (tile.ContainsKey(name))
+            if (tile.ContainsKey(name))
+            {
+                if (treasureTiles.Contains(name))
                 {
-                    if (treasureTiles.Contains(name))
-                    {
-                        tile.Remove(name);
-                        img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/treasure.png"));
-                        selected.Background = img;
-                        //tile.Add(name, selected);
-                        turn = 1;
-                        pScore++;
-                        treasureTiles.Remove(name);
-                    }
-                    else
-                    {
-                        tile.Remove(name);
-                        img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/cross.png"));
-                        selected.Background = img;
-                        //tile.Add(name, selected);
-                        turn = 1;
-                    }
+                    tile.Remove(name);
+                    img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/treasure.png"));
+                    selected.Background = img;
+                    pScore++;
+                    treasureTiles.Remove(name);
+                }
+                else
+                {
+                    tile.Remove(name);
+                    img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/cross.png"));
+                    selected.Background = img;
                 }
             }
-            else
-            {
-                Showbutton_Click(selected);
-            }
 
-            txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
             compTurn();
+            
+            txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
+            
         }//checkForTreasure
 
-        private async void Showbutton_Click(object sender)
+        private async void Showbutton_Click()
         {
-            MessageDialog showDialog = new MessageDialog("It's the computers turn");
-            showDialog.Commands.Add(new UICommand("Ok")
+            MessageDialog showDialog = new MessageDialog("Do you want to play again?");
+            showDialog.Commands.Add(new UICommand("Yes")
             {
                 Id = 0
             });
-            
+            showDialog.Commands.Add(new UICommand("No")
+            {
+                Id = 1
+            });
+
             showDialog.DefaultCommandIndex = 0;
+            showDialog.CancelCommandIndex = 1;
+
             
             var result = await showDialog.ShowAsync();
             if ((int)result.Id == 0)
             {
-                //do your task  
+                this.Frame.Navigate(typeof(CompBoard), null);
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(MainPage), null);
             }
             
         }
-
+        
         private void compTurn()
         {
             String compSelection = getRandom();
@@ -173,10 +178,9 @@ namespace BoredGame
                 if (tile.ContainsKey(compSelection))
                 {
                     tile[compSelection].Background = img;
-                    //tile.Add(compSelection, selected);
-                    turn = 0;
                     cScore++;
                     treasureTiles.Remove(compSelection);
+                    tile[compSelection].IsHitTestVisible = false;
                     tile.Remove(compSelection);
                 }
 
@@ -185,267 +189,26 @@ namespace BoredGame
             {
                 img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/cross.png"));
                 tile[compSelection].Background = img;
-                //tile.Add(name, selected);
-                turn = 0;
+                tile[compSelection].IsHitTestVisible = false;
                 tile.Remove(compSelection);
             }
 
             txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
 
+            if (treasureTiles.Count == 0)
+            {
+                Showbutton_Click();
+            }
+
         }
 
-        private void a1_Click(object sender, RoutedEventArgs e)
+        private void tile_Click(object sender, RoutedEventArgs e)
         {
             selectedTile = (Button)sender;
             checkForTreasure(selectedTile);
             selectedTile.IsHitTestVisible = false;
         }
-
-        private void a2_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void a3_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void a4_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void a5_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void a6_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void b1_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void b2_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void b3_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void b4_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void b5_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void b6_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void c1_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void c2_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void c3_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void c4_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void c5_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void c6_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void d1_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void d2_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void d3_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void d4_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void d5_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void d6_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            //selectedTile.IsEnabled = false;
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void e1_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void e2_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void e3_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void e4_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void e5_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void e6_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void f1_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void f2_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void f3_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void f4_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void f5_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
-
-        private void f6_Click(object sender, RoutedEventArgs e)
-        {
-            selectedTile = (Button)sender;
-            checkForTreasure(selectedTile);
-            selectedTile.IsHitTestVisible = false;
-        }
+        
     }
 
 }
