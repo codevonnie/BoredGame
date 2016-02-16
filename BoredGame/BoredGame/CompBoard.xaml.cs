@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -37,7 +38,8 @@ namespace BoredGame
             selectedTile = null;
             tile.Clear();
             setBoard();
-            txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
+            pScores.Text = ("Player \n    " + pScore);
+            cScores.Text = (" Comp \n    " + cScore);
 
         }
         
@@ -128,9 +130,6 @@ namespace BoredGame
                 }
             }
 
-            compTurn();
-            
-            txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
             
         }//checkForTreasure
 
@@ -193,7 +192,9 @@ namespace BoredGame
                 tile.Remove(compSelection);
             }
 
-            txtScores.Text = ("Player: " + pScore + " Computer: " + cScore);
+            pScores.Text = ("Player \n    " + pScore);
+            cScores.Text = (" Comp \n    " + cScore);
+
 
             if (treasureTiles.Count == 0)
             {
@@ -202,13 +203,21 @@ namespace BoredGame
 
         }
 
-        private void tile_Click(object sender, RoutedEventArgs e)
+        private async void tile_Click(object sender, RoutedEventArgs e)
         {
             selectedTile = (Button)sender;
             checkForTreasure(selectedTile);
             selectedTile.IsHitTestVisible = false;
+            pScores.Text = ("Player \n    " + pScore);
+            await Task.Delay(500);
+            compTurn();
+            cScores.Text = (" Comp \n    " + cScore);
+
         }
-        
+
+
     }
+
+    
 
 }

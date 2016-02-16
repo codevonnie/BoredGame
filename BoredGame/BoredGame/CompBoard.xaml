@@ -81,7 +81,14 @@
         <Button x:Name="f4" HorizontalAlignment="Left" Height="46" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
         <Button x:Name="f5" HorizontalAlignment="Left" Height="46" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
         <Button x:Name="f6" HorizontalAlignment="Left" Height="46" Grid.Row="6" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
-        <TextBlock x:Name="txtScores" Grid.Column="2" HorizontalAlignment="Right" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.ColumnSpan="4" Width="230" Height="45" FontSize="21.333" FontWeight="Bold" Margin="0,42,78,0" TextAlignment="Center" Grid.RowSpan="2" Grid.Row="2"/>
+        <RelativePanel Grid.Column="7" Margin="5,15,10,20" Grid.Row="5" Grid.RowSpan="3">
+            <Image x:Name="compBar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="65" Source="Assets/barrel.png"/>
+            <TextBlock x:Name="cScores" HorizontalAlignment="Left" Margin="10,45,-10,-5" TextWrapping="Wrap" Text="Comp" VerticalAlignment="Top" Height="40"/>
+        </RelativePanel>
+        <RelativePanel Margin="10,10,5,25" Grid.Row="5" Grid.RowSpan="3">
+            <Image x:Name="playerBar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="65" Source="Assets/barrel.png"/>
+            <TextBlock x:Name="pScores" Margin="10,45,-10,-35" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left"/>
+        </RelativePanel>
 
 
     </Grid>
