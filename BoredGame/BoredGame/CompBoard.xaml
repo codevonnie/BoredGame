@@ -10,9 +10,420 @@
         <ImageBrush Stretch="Fill" ImageSource="Assets/water.jpg"/>
     </Page.Background>
 
-    <Grid x:Name="mainGrid" RequestedTheme="Light">
+    <Page.Resources>
+        <Storyboard x:Name="sbCoinPlayer">
+            <DoubleAnimation Storyboard.TargetName="coinImg"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:1"
+                             AutoReverse="True"
+                             EnableDependentAnimation="True"
+                             RepeatBehavior="1x"/>
+        </Storyboard>
+
+        <Storyboard x:Name="sbCoinComp">
+            <DoubleAnimation Storyboard.TargetName="coinImgComp"
+                             Storyboard.TargetProperty="Opacity"
+                             From="0" To="1" Duration="0:0:1"
+                             AutoReverse="True"
+                             EnableDependentAnimation="True"
+                             RepeatBehavior="1x"/>
+        </Storyboard>
+    </Page.Resources>
+
+
+
+    <Grid x:Name="mainGrid" RequestedTheme="Light" Margin="0" Padding="0">
+
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Phone">
+                    <VisualState.Setters>
+
+
+
+                        <Setter Target="cScores.(FrameworkElement.Width)" Value="40"/>
+                        <Setter Target="cScores.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="cScores.(FrameworkElement.HorizontalAlignment)" Value="Center"/>
+                        <Setter Target="cScores.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>8,-13,32,18</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="cScores.(Grid.Row)" Value="7"/>
+                        <Setter Target="cScores.(Grid.RowSpan)" Value="1"/>
+                        <Setter Target="cScores.(Grid.Column)" Value="7"/>
+                        <Setter Target="cScores.(TextBlock.FontSize)" Value="13.333"/>
+                        <Setter Target="cScores.(TextBlock.Text)" Value=""/>
+                        <Setter Target="cScores.(Grid.ColumnSpan)" Value="1"/>
+                        <Setter Target="pScores.(TextBlock.Text)" Value=""/>
+                        <Setter Target="pScores.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="pScores.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="pScores.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>14,-14,26,19</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="pScores.(Grid.Row)" Value="7"/>
+                        <Setter Target="pScores.(Grid.RowSpan)" Value="1"/>
+                        <Setter Target="pScores.(TextBlock.FontSize)" Value="13.333"/>
+                        <Setter Target="pScores.(TextBlock.FontWeight)">
+                            <Setter.Value>
+                                <FontWeight>Bold</FontWeight>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="cScores.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="pScores.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="coinImgComp.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="coinImgComp.(UIElement.Opacity)" Value="0"/>
+                        <Setter Target="coinImgComp.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="coinImgComp.(Grid.ColumnSpan)" Value="1"/>
+                        <Setter Target="coinImgComp.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>-7,5,16,10</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="coinImgComp.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="coinImgComp.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="coinImgComp.(Grid.Column)" Value="7"/>
+                        <Setter Target="coinImgComp.(Image.Stretch)" Value="Uniform"/>
+                        <Setter Target="pScores.(TextBlock.TextAlignment)" Value="Center"/>
+                        <Setter Target="pScores.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="cScores.(UIElement.Opacity)" Value="1"/>
+                        <Setter Target="cScores.(TextBlock.TextAlignment)" Value="Center"/>
+                        <Setter Target="coinImg.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="coinImg.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="coinImg.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="coinImg.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>15,9,22,6</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="coinImg.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="a1.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="a1.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="a2.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="a2.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="a3.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="a3.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="a3.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="a4.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="a4.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="b6.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="b6.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="b6.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="b5.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="b5.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="b5.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="b4.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="b4.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="b4.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="b3.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="b3.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="b3.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="b2.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="b2.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="b2.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="b1.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="b1.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="b1.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="c1.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="c1.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="c1.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="c2.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="c2.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="c2.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="c3.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="c3.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="c3.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="c4.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="c4.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="c4.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="c5.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="c5.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="c5.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="c6.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="c6.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="c6.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="d6.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="d6.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="d6.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="d5.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="d5.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="d5.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="d4.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="d4.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="d4.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="d3.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="d3.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="d3.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="d2.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="d2.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="d2.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="d1.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="d1.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="d1.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="e1.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="e1.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="e1.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="f1.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="f1.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="f1.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="e2.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="e2.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="e2.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="f2.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="f2.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="f2.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="e3.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="e3.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="e3.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="f3.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="f3.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="f3.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="e4.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="e4.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="e4.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="f4.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="f4.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="f4.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="e5.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="e5.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="e5.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="f5.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="f5.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="f5.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="e6.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="e6.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="e6.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="f6.(FrameworkElement.HorizontalAlignment)" Value="Stretch"/>
+                        <Setter Target="f6.(FrameworkElement.Width)" Value="NaN"/>
+                        <Setter Target="f6.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="f6.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="f6.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="e6.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="e6.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="d6.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="d6.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="c6.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="c6.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="b6.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="b6.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="a6.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="a6.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="a6.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="a5.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="a5.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="a5.(FrameworkElement.Margin)">
+                            <Setter.Value>
+                                <Thickness>0,0,0,-1</Thickness>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Target="b5.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="b5.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="c5.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="c5.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="d5.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="d5.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="e5.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="e5.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="f5.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="f5.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="f4.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="f4.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="e4.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="e4.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="d4.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="d4.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="c4.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="c4.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="b4.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="b4.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="a4.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="a4.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="a3.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="a3.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="b3.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="b3.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="c3.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="c3.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="d3.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="d3.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="e3.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="e3.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="f3.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="f3.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="f2.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="f2.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="e2.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="e2.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="d2.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="d2.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="c2.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="c2.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="b2.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="b2.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="a2.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="a2.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="b1.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="b1.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="c1.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="c1.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="d1.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="d1.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="e1.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="e1.(FrameworkElement.Height)" Value="NaN"/>
+                        <Setter Target="f1.(FrameworkElement.VerticalAlignment)" Value="Stretch"/>
+                        <Setter Target="f1.(FrameworkElement.Height)" Value="NaN"/>
+
+
+
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="200"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Tablet"/>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+
+
         <Grid.Background>
-            <ImageBrush ImageSource="Assets/map.png"/>
+            <ImageBrush ImageSource="Assets/barmap.png"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -40,55 +451,53 @@
 
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="a1" HorizontalAlignment="Left" Margin="0" Grid.Row="1" VerticalAlignment="Top" Height="46" Grid.ColumnSpan="1" Width="80" Grid.Column="1" Click="tile_Click"/>
-        <Button x:Name="a2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Width="80" Grid.Column="1" Margin="0,0.667,0,0"  Click="tile_Click"/>
-        <Button x:Name="a3" HorizontalAlignment="Left" Height="46" Grid.Row="3" VerticalAlignment="Top" Width="80" Grid.Column="1" Margin="0,0.333,0,0"  Click="tile_Click"/>
-        <Button x:Name="a4" HorizontalAlignment="Left" Height="46" Grid.Row="4"  VerticalAlignment="Top" Width="80" Grid.Column="1"  Click="tile_Click"/>
-        <Button x:Name="a5" HorizontalAlignment="Left" Height="46" Grid.Row="5"  VerticalAlignment="Top" Width="80" Margin="0" Grid.Column="1" Click="tile_Click"/>
-        <Button x:Name="a6" HorizontalAlignment="Left" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="1" Click="tile_Click"/>
+        <Button x:Name="a1" HorizontalAlignment="Left" Margin="0,0,0,-1" Grid.Row="1" VerticalAlignment="Stretch" Grid.ColumnSpan="1" Grid.Column="1" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" Width="80"/>
+        <Button x:Name="a2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Grid.Column="1" Margin="0,0,0,-1"  Click="tile_Click" Width="80" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="a3" HorizontalAlignment="Left" Height="46" Grid.Row="3" VerticalAlignment="Top" Width="80" Grid.Column="1" Margin="0"  Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="a4" HorizontalAlignment="Stretch" Height="46" Grid.Row="4"  VerticalAlignment="Top" Width="80" Grid.Column="1"  Click="tile_Click" d:LayoutOverrides="TopPosition, BottomPosition"/>
+        <Button x:Name="a5" HorizontalAlignment="Stretch" Height="46" Grid.Row="5"  VerticalAlignment="Top" Width="80" Margin="0" Grid.Column="1" Click="tile_Click" d:LayoutOverrides="TopPosition, BottomPosition"/>
+        <Button x:Name="a6" HorizontalAlignment="Stretch" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="1" Click="tile_Click" d:LayoutOverrides="TopPosition, BottomPosition"/>
 
-        <Button x:Name="b1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click"/>
-        <Button x:Name="b2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click"/>
-        <Button x:Name="b3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click"/>
-        <Button x:Name="b4" HorizontalAlignment="Left" Height="46" Grid.Row="4"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click"/>
-        <Button x:Name="b5" HorizontalAlignment="Left" Height="46" Grid.Row="5"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click"/>
-        <Button x:Name="b6" HorizontalAlignment="Left" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click"/>
+        <Button x:Name="b1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="b2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="b3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="b4" HorizontalAlignment="Left" Height="46" Grid.Row="4"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="b5" HorizontalAlignment="Left" Height="46" Grid.Row="5"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="b6" HorizontalAlignment="Left" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="2" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
 
-        <Button x:Name="c1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click"/>
-        <Button x:Name="c2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click"/>
-        <Button x:Name="c3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click"/>
-        <Button x:Name="c4" HorizontalAlignment="Left" Height="46" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click"/>
-        <Button x:Name="c5" HorizontalAlignment="Left" Height="46" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click"/>
-        <Button x:Name="c6" HorizontalAlignment="Left" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click"/>
+        <Button x:Name="c1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="c2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="c3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="c4" HorizontalAlignment="Left" Height="46" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="c5" HorizontalAlignment="Left" Height="46" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="c6" HorizontalAlignment="Left" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="3" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
 
-        <Button x:Name="d1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click"/>
-        <Button x:Name="d2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click"/>
-        <Button x:Name="d3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click"/>
-        <Button x:Name="d4" HorizontalAlignment="Left" Height="46" Grid.Row="4"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click"/>
-        <Button x:Name="d5" HorizontalAlignment="Left" Height="46" Grid.Row="5"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click"/>
-        <Button x:Name="d6" HorizontalAlignment="Left" Height="46" Grid.Row="6" VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click"/>
+        <Button x:Name="d1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="d2" HorizontalAlignment="Left" Height="46" Grid.Row="2"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="d3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="d4" HorizontalAlignment="Left" Height="46" Grid.Row="4"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="d5" HorizontalAlignment="Left" Height="46" Grid.Row="5"  VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="d6" HorizontalAlignment="Left" Height="46" Grid.Row="6" VerticalAlignment="Top" Width="80" Grid.Column="4" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
 
-        <Button x:Name="e1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click"/>
-        <Button x:Name="e2" HorizontalAlignment="Left" Height="46" Grid.Row="2" VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click"/>
-        <Button x:Name="e3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click"/>
-        <Button x:Name="e4" HorizontalAlignment="Left" Height="46" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click"/>
-        <Button x:Name="e5" HorizontalAlignment="Left" Height="46" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click"/>
-        <Button x:Name="e6" HorizontalAlignment="Left" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click"/>
+        <Button x:Name="e1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="e2" HorizontalAlignment="Left" Height="46" Grid.Row="2" VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="e3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="e4" HorizontalAlignment="Left" Height="46" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="e5" HorizontalAlignment="Left" Height="46" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="e6" HorizontalAlignment="Left" Height="46" Grid.Row="6"  VerticalAlignment="Top" Width="80" Grid.Column="5" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
 
-        <Button x:Name="f1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
-        <Button x:Name="f2" HorizontalAlignment="Left" Height="46" Grid.Row="2" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
-        <Button x:Name="f3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
-        <Button x:Name="f4" HorizontalAlignment="Left" Height="46" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
-        <Button x:Name="f5" HorizontalAlignment="Left" Height="46" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
-        <Button x:Name="f6" HorizontalAlignment="Left" Height="46" Grid.Row="6" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click"/>
-        <RelativePanel Grid.Column="7" Margin="5,15,10,20" Grid.Row="5" Grid.RowSpan="3">
-            <Image x:Name="compBar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="65" Source="Assets/barrel.png"/>
-            <TextBlock x:Name="cScores" HorizontalAlignment="Left" Margin="10,45,-10,-5" TextWrapping="Wrap" Text="Comp" VerticalAlignment="Top" Height="40"/>
-        </RelativePanel>
-        <RelativePanel Margin="10,10,5,25" Grid.Row="5" Grid.RowSpan="3">
-            <Image x:Name="playerBar" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="65" Source="Assets/barrel.png"/>
-            <TextBlock x:Name="pScores" Margin="10,45,-10,-35" TextWrapping="Wrap" Text="Player" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left"/>
-        </RelativePanel>
+        <Button x:Name="f1" HorizontalAlignment="Left" Height="46" Grid.Row="1"  VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="f2" HorizontalAlignment="Left" Height="46" Grid.Row="2" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="f3" HorizontalAlignment="Left" Height="46" Grid.Row="3"  VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="f4" HorizontalAlignment="Left" Height="46" Grid.Row="4" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="f5" HorizontalAlignment="Left" Height="46" Grid.Row="5" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Button x:Name="f6" HorizontalAlignment="Left" Height="46" Grid.Row="6" VerticalAlignment="Top" Width="80" Grid.Column="6" Click="tile_Click" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+
+
+        <Image x:Name="coinImg" Source="Assets/coinsmall.png" Opacity="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,24,48,16" Grid.Row="5" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <TextBlock x:Name="pScores" TextWrapping="Wrap" Text="   Player" Width="40" HorizontalAlignment="Center" Margin="15,60,25,30" Grid.Row="6" VerticalAlignment="Center" Height="90" Grid.RowSpan="2" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
+        <Image x:Name="coinImgComp" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Assets/coinsmall.png" Opacity="0" Grid.Column="6" Margin="154,24,65,16" Grid.Row="5" Grid.ColumnSpan="2" d:LayoutOverrides="TopMargin, BottomMargin, LeftPosition, RightPosition"/>
+        <TextBlock x:Name="cScores" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Comp" VerticalAlignment="Top" Height="51" FontSize="14.667" FontWeight="Bold" Grid.Column="6" Margin="35,69,0,0" Grid.Row="6" Grid.RowSpan="2" Grid.ColumnSpan="2" Width="51" Opacity="0" d:LayoutOverrides="TopPosition, BottomPosition"/>
 
 
     </Grid>

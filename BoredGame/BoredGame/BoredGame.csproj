@@ -116,7 +116,10 @@
     <None Include="BoredGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\barmap.png" />
     <Content Include="Assets\barrel.png" />
+    <Content Include="Assets\coin-312284_640.png" />
+    <Content Include="Assets\coinsmall.png" />
     <Content Include="Assets\cross.png" />
     <Content Include="Assets\map.png" />
     <Content Include="Assets\scroll.png" />

@@ -25,6 +25,7 @@ namespace BoredGame
         private int pScore;
         private int cScore;
         public object NotifyType { get; private set; }
+        private Boolean coinCheckP, coinCheckC;
 
         public CompBoard()
         {
@@ -38,8 +39,8 @@ namespace BoredGame
             selectedTile = null;
             tile.Clear();
             setBoard();
-            pScores.Text = ("Player \n    " + pScore);
-            cScores.Text = (" Comp \n    " + cScore);
+            pScores.Text = "P\n" + pScore;
+            cScores.Text = "C\n" + cScore;
 
         }
         
@@ -118,15 +119,20 @@ namespace BoredGame
                 {
                     tile.Remove(name);
                     img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/treasure.png"));
+                    img.Stretch = Stretch.Fill;
                     selected.Background = img;
+                    selected.Background.Opacity = 1;
                     pScore++;
                     treasureTiles.Remove(name);
+                    coinCheckP = true;
                 }
                 else
                 {
                     tile.Remove(name);
                     img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/cross.png"));
+                    img.Stretch = Stretch.Fill;
                     selected.Background = img;
+                    coinCheckP = false;
                 }
             }
 
@@ -172,8 +178,10 @@ namespace BoredGame
             }
             if (treasureTiles.Contains(compSelection))
             {
-                
+
                 img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/treasure.png"));
+                img.Stretch = Stretch.Fill;
+
                 if (tile.ContainsKey(compSelection))
                 {
                     tile[compSelection].Background = img;
@@ -181,25 +189,29 @@ namespace BoredGame
                     treasureTiles.Remove(compSelection);
                     tile[compSelection].IsHitTestVisible = false;
                     tile.Remove(compSelection);
+                    coinCheckC = true;
                 }
 
             }
             else
             {
                 img.ImageSource = new BitmapImage(new Uri(this.BaseUri, "Assets/cross.png"));
+                img.Stretch = Stretch.Fill;
                 tile[compSelection].Background = img;
                 tile[compSelection].IsHitTestVisible = false;
                 tile.Remove(compSelection);
+                coinCheckC = false;
             }
 
-            pScores.Text = ("Player \n    " + pScore);
-            cScores.Text = (" Comp \n    " + cScore);
+            pScores.Text = "P\n" + pScore;
+            cScores.Text = "C\n" + cScore;
 
 
-            if (treasureTiles.Count == 0)
+            if ((pScore >=3)||(cScore>=3))
             {
                 Showbutton_Click();
             }
+            
 
         }
 
@@ -208,10 +220,20 @@ namespace BoredGame
             selectedTile = (Button)sender;
             checkForTreasure(selectedTile);
             selectedTile.IsHitTestVisible = false;
-            pScores.Text = ("Player \n    " + pScore);
+            pScores.Text = "P\n" + pScore;
             await Task.Delay(500);
             compTurn();
-            cScores.Text = (" Comp \n    " + cScore);
+            cScores.Text = "C\n" + cScore;
+            if (coinCheckP == true)
+            {
+                sbCoinPlayer.Begin();
+            }
+            if(coinCheckC == true)
+            {
+                sbCoinComp.Begin();
+            }
+            //await Task.Delay(1000);
+            
 
         }
 
