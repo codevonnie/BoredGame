@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="fd5d3d02-ebda-4400-a903-0da3dc1e9406" Publisher="CN=Yvonne" Version="1.0.0.0" />
+  <Identity Name="36678Vontastic.TreasureHunt-BoredGame" Publisher="CN=1E9633B0-98E4-4064-A0FD-337350E9DC6A" Version="1.1.3.0" />
   <mp:PhoneIdentity PhoneProductId="fd5d3d02-ebda-4400-a903-0da3dc1e9406" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>BoredGame</DisplayName>
-    <PublisherDisplayName>Yvonne</PublisherDisplayName>
+    <DisplayName>Treasure Hunt - Bored Game</DisplayName>
+    <PublisherDisplayName>VontasticApps</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="BoredGame.App">
-      <uap:VisualElements DisplayName="BoredGame" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="BoredGame" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Treasure Hunt - Bored Game" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="BoredGame" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
